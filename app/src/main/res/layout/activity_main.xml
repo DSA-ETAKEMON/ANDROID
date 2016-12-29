@@ -83,7 +83,8 @@
         android:layout_marginRight="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="55dp"
-        android:onClick="ingresar" />
+        android:onClick="ingresar"
+         />
 
     <Button
         android:text="EXIT"
