@@ -1,112 +1,94 @@
 package edu.upc.jonatan.eetakemongo.Entity;
 
+import java.util.List;
+
 /**
  * Created by Jonatan on 26/12/2016.
  */
 
 public class user {
-    int totalEtakemons, puntuacionTotal;
-    String name;
+        private int id;
+        private String nick;
+        private String password;
+        private String email;
+        private boolean isAdmin;
+        private String name;
 
-    public String getSurname() {
-        return surname;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public int getTotalEtakemons() {
-        return totalEtakemons;
-    }
+        public String getSurname() {
+            return surname;
+        }
 
-    public void setTotalEtakemons(int totalEtakemons) {
-        this.totalEtakemons = totalEtakemons;
-    }
+        public void setSurname(String surname) {
+            this.surname = surname;
+        }
 
-    public int getPuntuacionTotal() {
-        return puntuacionTotal;
-    }
+        public String getTotalEtakemons() {
+            return totalEtakemons;
+        }
 
-    public void setPuntuacionTotal(int puntuacionTotal) {
-        this.puntuacionTotal = puntuacionTotal;
-    }
+        public void setTotalEtakemons(String totalEtakemons) {
+            this.totalEtakemons = totalEtakemons;
+        }
 
-    String surname;
-    String Nick;
-    String Email;
-    String Password;
+        public String getPuntuacionTotal() {
+            return puntuacionTotal;
+        }
 
-    public user(String confirmPass) {
-        ConfirmPass = confirmPass;
-    }
+        public void setPuntuacionTotal(String puntuacionTotal) {
+            this.puntuacionTotal = puntuacionTotal;
+        }
 
-    public String getConfirmPass() {
-        return ConfirmPass;
-    }
-
-    public void setConfirmPass(String confirmPass) {
-        ConfirmPass = confirmPass;
-    }
-
-    String ConfirmPass;
-
-    public user() {
-    }
-
-    public user(String name,String apellidos, String nick, String email, String password,int totalPokemons, int punctuacionTotal) {
-        this.totalEtakemons = totalPokemons;
-        this.puntuacionTotal = punctuacionTotal;
-        this.name = name;
-        this.surname = apellidos;
-        Nick = nick;
-        Email = email;
-        Password = password;
-
-    }
+        private String surname;
+        private String totalEtakemons;
+        private String puntuacionTotal;
 
 
+        public int getId() {
+            return id;
+        }
 
+        public void setId(int id) {
+            this.id = id;
+        }
 
+        public String getNick() {
+            return nick;
+        }
 
+        public void setNick(String nick) {
+            this.nick = nick;
+        }
 
+        public String getPassword() {
+            return password;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public String getEmail() {
+            return email;
+        }
 
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
+        public boolean getIsAdmin() {
+            return isAdmin;
+        }
 
-    public String getNick() {
-        return Nick;
-    }
-
-    public void setNick(String nick) {
-        Nick = nick;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-
-
-
+        public void setIsAdmin(boolean isAdmin) {
+            this.isAdmin = isAdmin;
+        }
 
 }

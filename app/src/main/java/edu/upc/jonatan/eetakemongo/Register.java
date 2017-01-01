@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,19 +68,19 @@ public class Register extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void register(View view) {
+    public void OnClickRegistrar(View view) {
         final user user = new user();
         user.setNick(nick.getText().toString());
         user.setPassword(password.getText().toString());
         user.setEmail(mail.getText().toString());
         user.setName(name.getText().toString());
         user.setSurname(surname.getText().toString());
-        user.setConfirmPass(pasword2.getText().toString());
+        user.setPassword(pasword2.getText().toString());
 
-        if (nick == null || password == null || mail == null || name == null || surname == null || pasword2 == null) {
-            Toast.makeText(getApplicationContext(), "Fill in all the fields, please.", Toast.LENGTH_SHORT).show();
-        } else {
-            APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/x-www-form-urlencoded", new TextHttpResponseHandler() {
+        //if (password != pasword2) {
+          //  Toast.makeText(getApplicationContext(), "The password is incorrect.", Toast.LENGTH_SHORT).show();
+        //} else {
+            APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     Log.e(TAG, "Error registering from hello");
@@ -94,13 +95,15 @@ public class Register extends AppCompatActivity {
                     if (authenticationResult.isSuccessful) {
                         etakemonGO.setCurrentUserId(authenticationResult.userId);
                         Toast.makeText(getApplicationContext(), "Welcome " + user.getNick() + "!", Toast.LENGTH_LONG).show();
+                        Intent ib1 = new Intent(Register.this, Menu.class);
+                        startActivity(ib1);
                     } else {
                         Toast.makeText(getApplicationContext(), "Username or email already exists. Please try again!", Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
-    }
+    //}
 
         // Given a URL, establishes an HttpUrlConnection and retrieves
 // the web page content as a InputStream, which it returns as
@@ -206,6 +209,7 @@ public class Register extends AppCompatActivity {
         reader.read(buffer);
         return new String(buffer);
     }
+
 
     public void onClickCancel(View view) {
         Intent ib1 = new Intent(Register.this, MainActivity.class);

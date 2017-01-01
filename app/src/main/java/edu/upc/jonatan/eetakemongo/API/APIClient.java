@@ -20,8 +20,8 @@ import cz.msebera.android.httpclient.entity.StringEntity;
  */
 
 public class APIClient {
-    private static final String TAG="PokEETAC";
-    private static String BASE_URL = "http://192.168.1.133:8080/etakemon";
+    private static final String TAG="Eetakemon";
+    private static String BASE_URL = "http://192.168.1.133:9090/etakemon";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -42,7 +42,6 @@ public class APIClient {
     }
 
     public static void post(Context context, String url, StringEntity entity, String contentType, AsyncHttpResponseHandler responseHandler) {
-        client.setTimeout(50000);
         client.post(context, getAbsoluteUrl(url), entity, contentType, responseHandler);
     }
 

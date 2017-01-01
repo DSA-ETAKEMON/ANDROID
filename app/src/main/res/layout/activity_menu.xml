@@ -8,6 +8,68 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.upc.jonatan.eetakemongo.Menu">
+    tools:context="edu.upc.jonatan.eetakemongo.MenuAct">
+
+
+    <Button
+        android:text="CAZAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btCazar"
+        android:ems="17"
+        style="@style/Widget.AppCompat.Button"
+        android:onClick="onClickCazar" />
+
+    <Button
+        android:text="EETAKEDEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:id="@+id/btEetakedex"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_below="@+id/btCazar"
+        android:ems="17"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickEetakedex" />
+
+    <Button
+        android:text="PERFIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btRanking"
+        android:layout_alignRight="@+id/btRanking"
+        android:layout_alignEnd="@+id/btRanking"
+        android:layout_marginTop="44dp"
+        android:ems="17"
+        android:id="@+id/btPerfil"
+        style="@style/Widget.AppCompat.Button"
+        android:onClick="onClickPerfil" />
+
+    <Button
+        android:text="RANKING"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btRanking"
+        android:ems="17"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="44dp"
+        android:layout_alignLeft="@+id/btEetakedex"
+        android:layout_alignStart="@+id/btEetakedex"
+        android:onClick="onClickRanking" />
+
+    <Button
+        android:text="SALIR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/btSalir"
+        style="@style/Widget.AppCompat.Button"
+        android:onClick="onClickExit" />
 
 </RelativeLayout>
