@@ -17,6 +17,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etNick"
+        android:text="hicham27"
         android:layout_below="@+id/tvNick"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

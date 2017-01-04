@@ -2,7 +2,9 @@ package edu.upc.jonatan.eetakemongo.API;
 
 import java.io.UnsupportedEncodingException;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
@@ -19,9 +21,9 @@ import cz.msebera.android.httpclient.entity.StringEntity;
  * Created by Jonatan on 26/12/2016.
  */
 
-public class APIClient {
+public class APIClient extends AppCompatActivity{
     private static final String TAG="Eetakemon";
-    private static String BASE_URL = "http://192.168.1.133:9090/etakemon";
+    private static String BASE_URL = "http://192.168.1.46:9090/etakemon";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -32,7 +34,8 @@ public class APIClient {
         try {
             entity = new StringEntity(new Gson().toJson(object));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.toString());
+           // Toast.makeText(getApplicationContext(), "-------- " + e.toString(), Toast.LENGTH_LONG).show();
         }
         return entity;
     }

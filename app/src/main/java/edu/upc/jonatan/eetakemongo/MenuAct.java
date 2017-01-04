@@ -22,14 +22,14 @@ public class MenuAct extends AppCompatActivity {
         Intent Cazar = new Intent(MenuAct.this, Register.class);
         startActivity(Cazar);
     }
-   /* public void onClickRanking (View view){
-        Intent Cazar = new Intent(MenuAct.this, Cazar.class);
-        startActivity(Cazar);
-    }
-    public void onClickEetakedex (View view){
+    /*public void onClickRanking (View view){
         Intent Cazar = new Intent(MenuAct.this, Cazar.class);
         startActivity(Cazar);
     }*/
+    public void onClickEetakedex (View view){
+        Intent Cazar = new Intent(MenuAct.this, EtakedexActivity.class);
+        startActivity(Cazar);
+    }
     public void onClickExit (View view){
         Intent inicio = new Intent (MenuAct.this, MainActivity.class);
         startActivity(inicio);

@@ -4,27 +4,25 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import edu.upc.jonatan.eetakemongo.Entity.*;
 import com.google.gson.Gson;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import cz.msebera.android.httpclient.Header;
 
 import edu.upc.jonatan.eetakemongo.API.APIClient;
-import edu.upc.jonatan.eetakemongo.Entity.user;
-import edu.upc.jonatan.eetakemongo.ServiceLibraryResult.AuthenticationResult;
+import edu.upc.jonatan.eetakemongo.Entity.FormatException;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText et1, et2;
     Button ingresarbtn;
     private static final String TAG="LOGIN";
-    private etakemonGO EtakemonGO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +31,22 @@ public class MainActivity extends AppCompatActivity {
         et1= (EditText) findViewById(R.id.login);
         et2= (EditText) findViewById(R.id.pswd);
         ingresarbtn = (Button) findViewById((R.id.button2));
-        EtakemonGO = etakemonGO.getInstance();
+
     }
     public void ingresar (View view) {
-        final user user = new user();
-        user.setNick(et1.getText().toString());
-        user.setPassword(et2.getText().toString());
+        final User usr1 = new User();
 
-        APIClient.post(this, "/user/login", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {
+        try {
+            usr1.setNick(et1.getText().toString());
+            usr1.setPassword(et2.getText().toString());
+        }catch (FormatException e)
+        {
+            Log.e(TAG, e.toString());
+            Toast.makeText(getApplicationContext(), "-------- " + e.toString(), Toast.LENGTH_LONG).show();
+
+        }
+
+        APIClient.post(this, "/user/login", APIClient.getObjectAsStringEntity(usr1), "application/json", new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.e(TAG, "Error logging in");
@@ -50,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Log.i(TAG, "Success logging in: " + responseString);
-                AuthenticationResult authenticationResult = new Gson().fromJson(responseString, AuthenticationResult.class);
-                Log.i(TAG, "Login is successful: " + authenticationResult.isSuccessful);
-                if (authenticationResult.isSuccessful) {
-                    EtakemonGO.setCurrentUserId(authenticationResult.userId);
-                    Toast.makeText(getApplicationContext(), "Welcome " + user.getNick() + "!", Toast.LENGTH_LONG).show();
+             //  String res = (responseString);
+                Gson json = new Gson();
+               User usrRes = json.fromJson(responseString, User.class);
+                Log.i(TAG, "Login is successful: " + usrRes);
+                if (usrRes.getNick().equals(usr1.getNick())) {
+
+                    Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_LONG).show();
 
                     Intent menu = new Intent(MainActivity.this, MenuAct.class);
                     startActivity(menu);
@@ -66,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void salir (View v){
-        finish();
+        Intent inb1 = new Intent(MainActivity.this, StartAct.class);
+        startActivity(inb1);
     }
     public void onClickRegister (View view){
         Intent inb1 = new Intent(MainActivity.this, Register.class);
