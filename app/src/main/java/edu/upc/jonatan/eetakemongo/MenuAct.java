@@ -27,8 +27,11 @@ public class MenuAct extends AppCompatActivity {
         startActivity(Cazar);
     }*/
     public void onClickEetakedex (View view){
-        Intent Cazar = new Intent(MenuAct.this, EtakedexActivity.class);
-        startActivity(Cazar);
+        Bundle intentdata = getIntent().getExtras();
+        String nick = intentdata.getString("nick");
+        Intent Etakedex = new Intent(MenuAct.this, EtakedexActivity.class);
+        Etakedex.putExtra("nick2",nick);
+        startActivity(Etakedex);
     }
     public void onClickExit (View view){
         Intent inicio = new Intent (MenuAct.this, MainActivity.class);

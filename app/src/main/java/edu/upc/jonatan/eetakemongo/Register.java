@@ -15,7 +15,6 @@ import edu.upc.jonatan.eetakemongo.Entity.User;
 import cz.msebera.android.httpclient.Header;
 import edu.upc.jonatan.eetakemongo.API.APIClient;
 import edu.upc.jonatan.eetakemongo.Entity.FormatException;
-import edu.upc.jonatan.eetakemongo.ServiceLibraryResult.AuthenticationResult;
 
 /**
  * Created by Jonatan on 01/01/2017.

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et1, et2;
     Button ingresarbtn;
+    NickOnUse nickOnUse;
     private static final String TAG="LOGIN";
 
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         et1= (EditText) findViewById(R.id.login);
         et2= (EditText) findViewById(R.id.pswd);
         ingresarbtn = (Button) findViewById((R.id.button2));
-
+        nickOnUse = NickOnUse.getInstance();
     }
     public void ingresar (View view) {
         final User usr1 = new User();
@@ -56,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Log.i(TAG, "Success logging in: " + responseString);
-             //  String res = (responseString);
                 Gson json = new Gson();
                User usrRes = json.fromJson(responseString, User.class);
                 Log.i(TAG, "Login is successful: " + usrRes);
                 if (usrRes.getNick().equals(usr1.getNick())) {
 
                     Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_LONG).show();
-
+                    nickOnUse.setUserNick(usr1.getNick());
                     Intent menu = new Intent(MainActivity.this, MenuAct.class);
                     startActivity(menu);
                 } else {

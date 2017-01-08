@@ -23,7 +23,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class APIClient extends AppCompatActivity{
     private static final String TAG="Eetakemon";
-    private static String BASE_URL = "http://192.168.1.46:9090/etakemon";
+    private static String BASE_URL = "http://192.168.1.135:9090/etakemon";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -35,7 +35,6 @@ public class APIClient extends AppCompatActivity{
             entity = new StringEntity(new Gson().toJson(object));
         } catch (UnsupportedEncodingException e) {
             Log.e(TAG, e.toString());
-           // Toast.makeText(getApplicationContext(), "-------- " + e.toString(), Toast.LENGTH_LONG).show();
         }
         return entity;
     }
