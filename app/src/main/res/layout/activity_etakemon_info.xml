@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_etakemon_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.upc.jonatan.eetakemongo.EtakemonInfoAct"
+    android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
+    android:backgroundTint="#7cf708">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/nameEta"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/tipoEta"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/nameEta"
+        android:layout_alignLeft="@+id/nameEta"
+        android:layout_alignStart="@+id/nameEta" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/electrico"
+        android:id="@+id/etaImage"
+        android:layout_above="@+id/nameEta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="19dp" />
+
+    <TextView
+        android:text="CAPTURADO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/pokeball"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/etaImage"
+        android:layout_alignStart="@+id/etaImage" />
+
+
+</RelativeLayout>
+

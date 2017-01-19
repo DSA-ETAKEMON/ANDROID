@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_actualizar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.upc.jonatan.eetakemongo.ActualizarAct">
+
+    <TextView
+        android:text="INTRODUCE EL PASSWORD ACTUAL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:ems="15"
+        android:text="admin"
+        android:layout_marginTop="22dp"
+        android:textSize="27dp"
+        android:id="@+id/ActualPassET"
+        android:background="@android:drawable/editbox_background_normal"
+        android:inputType="textPassword"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="INTRODUCE NUEVO PASSWORD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/ActualPassET"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="CONFIRMACION NUEVO PASSWORD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="116dp"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:ems="15"
+        android:text="qwerty"
+        android:layout_marginTop="36dp"
+        android:textSize="27dp"
+        android:id="@+id/newPassET"
+        android:background="@android:drawable/editbox_background_normal"
+        android:inputType="text"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="CAMBIAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pswdConfET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:id="@+id/cambiarbtn"
+        android:onClick="onClickCambiar"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:ems="15"
+        android:text="qwer"
+        android:layout_marginTop="33dp"
+        android:textSize="27dp"
+        android:id="@+id/pswdConfET"
+        android:background="@android:drawable/editbox_background_normal"
+        android:inputType="text"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

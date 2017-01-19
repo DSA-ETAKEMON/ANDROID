@@ -39,7 +39,12 @@
             android:name=".CazarAct"
             android:label="@string/title_activity_cazar" />
         <activity android:name=".EtakedexActivity" />
-        <activity android:name=".EetakedexAdapter"></activity>
+        <activity android:name=".EetakedexAdapter" />
+        <activity android:name=".EtakemonInfoAct" />
+        <activity android:name=".RankingAct" />
+        <activity android:name=".RankingAdapter" />
+        <activity android:name=".PerfilAct" />
+        <activity android:name=".ActualizarAct"></activity>
     </application>
 
 </manifest>

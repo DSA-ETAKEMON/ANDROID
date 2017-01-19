@@ -36,7 +36,7 @@ public class User {
     public void setPuntuacionTotal(int puntuacionTotal) {
         this.puntuacionTotal = puntuacionTotal;
     }
-   // int id;
+    int id;
     String surname;
     String nick;
     String email;
@@ -90,7 +90,7 @@ public class User {
         else throw new FormatException("El email no debe ser nulo");
     }
 
-  //  public int getId(){return this.id;}
+    public int getId(){return id;}
     public String getPassword() {
         return password;
     }
@@ -99,5 +99,8 @@ public class User {
         if(password!=null)
             this.password = password;
         else throw new FormatException("la contraseña no debe ser nulo");
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }

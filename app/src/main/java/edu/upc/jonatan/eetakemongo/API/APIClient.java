@@ -23,7 +23,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class APIClient extends AppCompatActivity{
     private static final String TAG="Eetakemon";
-    private static String BASE_URL = "http://192.168.1.135:9090/etakemon";
+    private static String BASE_URL = "http://10.192.158.191:9090/etakemon";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

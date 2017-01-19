@@ -21,7 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et1, et2;
     Button ingresarbtn;
-    NickOnUse nickOnUse;
+    Integer idOnUse;
+    String nickOnUse;
+    String nameOnUse;
+    String surnameOnUse;
+    String mailOnUse;
+
     private static final String TAG="LOGIN";
 
 
@@ -30,9 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         et1= (EditText) findViewById(R.id.login);
-        et2= (EditText) findViewById(R.id.pswd);
+        et2= (EditText) findViewById(R.id.pswdConfET);
         ingresarbtn = (Button) findViewById((R.id.button2));
-        nickOnUse = NickOnUse.getInstance();
     }
     public void ingresar (View view) {
         final User usr1 = new User();
@@ -58,13 +62,23 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Log.i(TAG, "Success logging in: " + responseString);
                 Gson json = new Gson();
-               User usrRes = json.fromJson(responseString, User.class);
+                User usrRes = json.fromJson(responseString, User.class);
                 Log.i(TAG, "Login is successful: " + usrRes);
                 if (usrRes.getNick().equals(usr1.getNick())) {
 
                     Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_LONG).show();
-                    nickOnUse.setUserNick(usr1.getNick());
+                    idOnUse=usrRes.getId();
+                    nameOnUse=usrRes.getName();
+                    nickOnUse=usrRes.getNick();
+                    surnameOnUse=usrRes.getSurname();
+                    mailOnUse=usrRes.getEmail();
+
                     Intent menu = new Intent(MainActivity.this, MenuAct.class);
+                    menu.putExtra("idUser",idOnUse);
+                    menu.putExtra("nameUser",nameOnUse);
+                    menu.putExtra("nickUser",nickOnUse);
+                    menu.putExtra("surnameUser",surnameOnUse);
+                    menu.putExtra("mailUser",mailOnUse);
                     startActivity(menu);
                 } else {
                     Toast.makeText(getApplicationContext(), "Username or password incorrect. Please try again!", Toast.LENGTH_LONG).show();

@@ -8,33 +8,59 @@ import android.widget.Button;
 
 public class MenuAct extends AppCompatActivity {
 
+    int idonuse;
+    String nameonuse;
+    String nickonuse;
+    String surnameonuse;
+    String mailonuse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Bundle intentdata = getIntent().getExtras();
+        Integer idUser = intentdata.getInt("idUser");
+        String nameUser = intentdata.getString("nameUser");
+        String nickUser = intentdata.getString("nickUser");
+        String surnameUser = intentdata.getString("surnameUser");
+        String mailUser = intentdata.getString("mailUser");
+
+        idonuse = idUser;
+        nickonuse= nickUser;
+        nameonuse=nameUser;
+        surnameonuse=surnameUser;
+        mailonuse= mailUser;
+
     }
     public void onClickCazar (View view){
         Intent Cazar = new Intent(MenuAct.this, CazarAct.class);
         startActivity(Cazar);
     }
     public void onClickPerfil (View view){
-        Intent Cazar = new Intent(MenuAct.this, Register.class);
-        startActivity(Cazar);
+        Intent perfil = new Intent(MenuAct.this, PerfilAct.class);
+        perfil.putExtra("idUser",idonuse);
+        perfil.putExtra("nameUser",nameonuse);
+        perfil.putExtra("nickUser",nickonuse);
+        perfil.putExtra("surnameUser",surnameonuse);
+        perfil.putExtra("mailUser",mailonuse);
+        startActivity(perfil);
     }
-    /*public void onClickRanking (View view){
-        Intent Cazar = new Intent(MenuAct.this, Cazar.class);
-        startActivity(Cazar);
-    }*/
+    public void onClickRanking (View view){
+        try {
+            Intent Ranking = new Intent(MenuAct.this, RankingAct.class);
+            startActivity(Ranking);
+        }catch (Exception e){
+            System.out.println("errooooooor                       "+e);
+        }
+    }
     public void onClickEetakedex (View view){
-        Bundle intentdata = getIntent().getExtras();
-        String nick = intentdata.getString("nick");
-        Intent Etakedex = new Intent(MenuAct.this, EtakedexActivity.class);
-        Etakedex.putExtra("nick2",nick);
+
+        Intent Etakedex = new Intent(this, EtakedexActivity.class);
+        Etakedex.putExtra("idUser",idonuse);
         startActivity(Etakedex);
     }
     public void onClickExit (View view){
-        Intent inicio = new Intent (MenuAct.this, MainActivity.class);
+        Intent inicio = new Intent (this, MainActivity.class);
         startActivity(inicio);
 
     }

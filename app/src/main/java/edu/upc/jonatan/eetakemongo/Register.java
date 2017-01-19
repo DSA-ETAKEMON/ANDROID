@@ -66,9 +66,10 @@ public class Register extends AppCompatActivity {
                 Log.i(TAG, e.toString());
             }
 
-            if (name.getText().length()!=0 || password.getText().length()!=0 ||
+           /* if (name.getText().length()!=0 || password.getText().length()!=0 ||
                     mail.getText().length()!=0 || nick.getText().length()!=0 ||
-                    surname.getText().length()!=0 || pasword2.getText().length()!=0) {
+                    surname.getText().length()!=0 || pasword2.getText().length()!=0) {*/
+            if (name.getText().length()==0){
                 Toast.makeText(getApplicationContext(), "Write on all the fields please.", Toast.LENGTH_SHORT).show();
             } else {
                 APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {

@@ -6,8 +6,8 @@ package edu.upc.jonatan.eetakemongo.Entity;
 
 public class etakemons {
     int id;
-    String Puntos;
-    String Tipo, name;
+    int puntos;
+    String tipo, name;
 
     public int getId() {
         return id;
@@ -18,11 +18,11 @@ public class etakemons {
     }
 
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
 
     public void setTipo(String tipo) {
-        Tipo = tipo;
+        this.tipo = tipo;
     }
 
     public String getName() {
@@ -33,12 +33,12 @@ public class etakemons {
         this.name = name;
     }
 
-    public String getPuntos() {
-        return Puntos;
+    public int getPuntos() {
+        return puntos;
     }
 
-    public void setPuntos(String puntos) {
-        this.Puntos = puntos;
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 
 }
