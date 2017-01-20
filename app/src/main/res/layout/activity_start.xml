@@ -18,6 +18,12 @@
         android:fitsSystemWindows="true"
         android:background="@drawable/fondo">
 
+        <ImageView
+            android:layout_width="475dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logotipo"
+            android:id="@+id/imageView3" />
+
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
@@ -44,12 +50,6 @@
                 android:layout_weight="0.05" />
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="475dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/logotipo"
-            android:id="@+id/imageView3" />
 
     </FrameLayout>
 

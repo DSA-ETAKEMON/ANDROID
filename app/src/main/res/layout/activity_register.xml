@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@android:color/holo_red_dark"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:theme="@android:style/Theme.NoTitleBar"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.upc.jonatan.eetakemongo.Register">
 
@@ -17,7 +18,6 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etNick"
-        android:text="hicham27"
         android:layout_below="@+id/tvNick"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -132,7 +132,8 @@
         android:layout_alignParentStart="true"
         android:background="@android:drawable/editbox_background"
         android:layout_alignRight="@+id/etNick"
-        android:layout_alignEnd="@+id/etNick" />
+        android:layout_alignEnd="@+id/etNick"
+        style="@style/Widget.AppCompat.EditText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -145,6 +146,41 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:text="CANCEL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:id="@+id/btCancel"
+        android:onClick="onClickCancel"
+        android:ems="5"
+        android:layout_alignBottom="@+id/btRegister"
+        android:layout_toRightOf="@+id/etConfirmPass"
+        android:layout_toEndOf="@+id/etConfirmPass"
+        android:textSize="17sp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignTop="@+id/btRegister"
+        android:textColor="@color/cast_expanded_controller_text_color" />
+
+    <Button
+        android:text="REGISTER NOW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:id="@+id/btRegister"
+        style="@style/Widget.AppCompat.Button"
+        android:onClick="OnClickRegistrar"
+        android:textSize="17sp"
+        android:ems="8"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_below="@+id/etMail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/cast_expanded_controller_text_color" />
+
     <TextView
         android:text="REGISTER"
         android:layout_width="wrap_content"
@@ -152,35 +188,10 @@
         android:id="@+id/etRegister"
         tools:textSize="35sp"
         android:textStyle="normal|bold"
-        android:layout_marginTop="15dp"
+        android:textColor="@android:color/background_light"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/background_light" />
-
-    <Button
-        android:text="REGISTER NOW"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etMail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:id="@+id/btRegister"
-        style="@style/Widget.AppCompat.Button"
-        android:onClick="OnClickRegistrar" />
-
-    <Button
-        android:text="CANCEL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btRegister"
-        android:layout_toRightOf="@+id/etConfirmPass"
-        android:layout_toEndOf="@+id/etConfirmPass"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:id="@+id/btCancel"
-        android:onClick="onClickCancel" />
+        android:layout_marginTop="19dp"
+        android:textSize="22sp" />
 
 </RelativeLayout>

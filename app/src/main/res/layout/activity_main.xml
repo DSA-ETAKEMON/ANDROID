@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,33 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.upc.jonatan.eetakemongo.MainActivity"
-    android:background="@android:color/holo_blue_dark">
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="PASSWORD"
-        android:ems="15"
-        android:text="admin"
-        android:layout_marginTop="45dp"
-        android:textSize="27dp"
-        android:id="@+id/pswdConfET"
-        android:layout_below="@+id/login"
-        android:background="@android:drawable/editbox_background_normal"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:text="LOGIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp"
-        android:textSize="50dp"
-        android:id="@+id/textView"
-        android:textStyle="bold"
-        android:background="@android:color/holo_blue_dark"
-        android:textColor="@android:color/background_light" />
+    android:background="@android:color/holo_red_dark">
 
     <Button
         android:text="Register"
@@ -43,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/registerbutton"
-        android:background="@android:drawable/btn_default_small"
-        android:textColor="#fe5a5b5a"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/cast_expanded_controller_text_color"
         android:ems="5"
         android:textAlignment="center"
         android:layout_alignTop="@+id/button2"
@@ -52,41 +27,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="22dp"
         android:layout_marginEnd="22dp"
-        android:onClick="onClickRegister" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="USER"
-        android:text="Jona"
-        android:ems="15"
-        android:textSize="27dp"
-        android:id="@+id/login"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="89dp" />
-
-    <Button
-        android:text="Login"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:background="@android:drawable/btn_default_small"
-        android:textColor="#fe5a5b5a"
-        android:ems="5"
-        android:textAlignment="center"
-        android:layout_below="@+id/pswdConfET"
-        android:layout_toLeftOf="@+id/registerbutton"
-        android:layout_toStartOf="@+id/registerbutton"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="55dp"
-        android:onClick="ingresar"
-         />
+        android:onClick="onClickRegister"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignBottom="@+id/button2" />
 
     <Button
         android:text="EXIT"
@@ -98,5 +41,67 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
-        android:onClick="salir" />
+        android:onClick="salir"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/cast_expanded_controller_text_color" />
+
+    <Button
+        android:text="Login"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:background="?android:attr/colorPrimary"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:ems="5"
+        android:textAlignment="center"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp"
+        android:onClick="ingresar"
+        android:layout_above="@+id/exit"
+        android:layout_toLeftOf="@+id/registerbutton"
+        android:layout_toStartOf="@+id/registerbutton"
+        android:layout_marginBottom="25dp"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:ems="15"
+        android:textSize="27dp"
+        android:id="@+id/pswdConfET"
+        android:background="@android:drawable/editbox_background_normal"
+        android:inputType="textPassword"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/registerbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="USER"
+        android:ems="15"
+        android:textSize="27dp"
+        android:id="@+id/login"
+        android:background="@android:drawable/editbox_background_normal"
+        android:layout_above="@+id/pswdConfET"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logotipo"
+        android:id="@+id/imageView2"
+        android:layout_alignBottom="@+id/login"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="19dp" />
+
 </RelativeLayout>

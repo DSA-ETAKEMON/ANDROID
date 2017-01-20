@@ -16,6 +16,7 @@ public class MenuAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Bundle intentdata = getIntent().getExtras();
@@ -63,5 +64,10 @@ public class MenuAct extends AppCompatActivity {
         Intent inicio = new Intent (this, MainActivity.class);
         startActivity(inicio);
 
+    }
+    public void onClickWikilist (View view){
+
+        Intent wikilist = new Intent(this, WikilistAct.class);
+        startActivity(wikilist);
     }
 }

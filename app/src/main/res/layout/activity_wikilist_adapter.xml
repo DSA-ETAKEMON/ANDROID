@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_ranking_adapter"
+    android:id="@+id/activity_wikilist_adapter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.upc.jonatan.eetakemongo.RankingAdapter">
+    tools:context="edu.upc.jonatan.eetakemongo.WikilistAdapter">
 
     <ImageView
         android:id="@+id/icono"
@@ -20,10 +20,10 @@
         android:src="@drawable/electrico" />
 
     <TextView
-        android:text="PUNTUACION"
+        android:text="TIPO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/userPuntuacion"
+        android:id="@+id/etakemonTipo"
         android:layout_gravity="end"
         android:layout_weight="1"
         android:layout_marginLeft="26dp"
@@ -36,13 +36,14 @@
         android:text="PIKACHU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/userNick"
+        android:id="@+id/etakemonName"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:textSize="20sp"
-        android:layout_marginTop="14dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/userPuntuacion"
-        android:layout_alignStart="@+id/userPuntuacion" />
+        android:layout_above="@+id/etakemonTipo"
+        android:layout_alignLeft="@+id/etakemonTipo"
+        android:layout_alignStart="@+id/etakemonTipo"
+        android:layout_marginBottom="19dp"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>

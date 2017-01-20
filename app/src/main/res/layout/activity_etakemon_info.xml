@@ -11,39 +11,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.upc.jonatan.eetakemongo.EtakemonInfoAct"
     android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
-    android:backgroundTint="#7cf708">
+    android:backgroundTint="?android:attr/colorMultiSelectHighlight">
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="150dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/nameEta"
-        android:textSize="30sp"
-        android:textStyle="normal|bold"
-        android:textAllCaps="true" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
         android:id="@+id/tipoEta"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_alignTop="@+id/nameEta"
         android:layout_alignLeft="@+id/nameEta"
+        android:textAlignment="center"
         android:layout_alignStart="@+id/nameEta" />
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/electrico"
-        android:id="@+id/etaImage"
-        android:layout_above="@+id/nameEta"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp" />
 
     <TextView
         android:text="CAPTURADO"
@@ -64,6 +44,50 @@
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/etaImage"
         android:layout_alignStart="@+id/etaImage" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/electrico"
+        android:id="@+id/etaImage"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Puntos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipoEta"
+        android:layout_alignLeft="@+id/tipoEta"
+        android:layout_alignStart="@+id/tipoEta"
+        android:layout_marginTop="13dp"
+        android:id="@+id/puntosTV"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:text="Descripcion "
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/puntosTV"
+        android:layout_marginTop="13dp"
+        android:id="@+id/descriptionTV"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameEta"
+        android:textSize="25sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:layout_marginTop="13dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/etaImage"
+         />
 
 
 </RelativeLayout>

@@ -41,6 +41,7 @@ public class RankingAct extends ListActivity {
                 Log.i(TAG, "Showing TopUsers");
                 Type listType = new TypeToken<ArrayList<User>>(){}.getType();
                 List<User> user2 = new Gson().fromJson(responseString, listType);
+                System.out.println("llista    " + user2);
                 setListAdapter(new RankingAdapter(RankingAct.this, user2));
             }
         });

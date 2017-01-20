@@ -38,8 +38,6 @@ public class ActualizarAct extends AppCompatActivity {
         newpassET = (EditText) findViewById(R.id.newPassET);
         confirmpassET = (EditText) findViewById(R.id.pswdConfET);
 
-        newPass = newpassET.getText().toString();
-        confirmPass = confirmpassET.getText().toString();
 
         Bundle intentdata = getIntent().getExtras();
         String nickUser = intentdata.getString("nickUser");
@@ -47,6 +45,9 @@ public class ActualizarAct extends AppCompatActivity {
 
     }
     public void onClickCambiar (View view){
+
+        newPass = newpassET.getText().toString();
+        confirmPass = confirmpassET.getText().toString();
 
         final User usr1 = new User();
 
@@ -80,10 +81,11 @@ public class ActualizarAct extends AppCompatActivity {
                         try {
                             usrRes.setPassword(newPass);
                             System.out.println("paso 2");
+                            System.out.println("holaaa som aqui     " + usrRes.getPassword());
                         } catch (FormatException e) {
                             System.out.println("erroor     " + e);
                         }
-                        APIClient.post(ActualizarAct.this, "/user/update", APIClient.getObjectAsStringEntity(usr1), "application/json", new TextHttpResponseHandler() {
+                        APIClient.post(ActualizarAct.this, "/user/update", APIClient.getObjectAsStringEntity(usrRes), "application/json", new TextHttpResponseHandler() {
 
                             @Override
                             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -98,7 +100,9 @@ public class ActualizarAct extends AppCompatActivity {
                                 Gson json = new Gson();
                                 User usrRes = json.fromJson(responseString, User.class);
                                 Log.i(TAG, "Change pass succesful " + usrRes);
+                                Toast.makeText(getApplicationContext(), "Password cambiado correctamente", Toast.LENGTH_LONG).show();
                                 finish();
+
                             }
                         });
                     } else {

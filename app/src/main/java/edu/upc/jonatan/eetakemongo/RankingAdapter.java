@@ -37,7 +37,7 @@ public class RankingAdapter extends ArrayAdapter {
         Elements element;
 
         if(null == itemView) {
-            itemView = inflater.inflate(R.layout.activity_eetakedex_adapter, parent, false);
+            itemView = inflater.inflate(R.layout.activity_ranking_adapter, parent, false);
             element = new Elements();
             element.image = (ImageView) itemView.findViewById(R.id.icono);
             element.name = (TextView) itemView.findViewById(R.id.userNick);
@@ -47,9 +47,9 @@ public class RankingAdapter extends ArrayAdapter {
             element = (Elements) itemView.getTag();
         }
         if (user1 != null) {
-            element.image.setImageResource(R.drawable.pokeball);
-            element.name.setText(user1.getNick());
-            element.puntos.setText(user1.getPuntuacionTotal());
+            element.image.setImageResource(R.drawable.usericono);
+            element.name.setText("NICK: " + user1.getNick());
+            element.puntos.setText("PUNTUACION: "+user1.getPuntuacionTotal() + " puntos");
         }
         return itemView;
     }
