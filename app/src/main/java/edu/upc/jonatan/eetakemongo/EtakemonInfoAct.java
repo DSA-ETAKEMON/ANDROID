@@ -3,6 +3,7 @@ package edu.upc.jonatan.eetakemongo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class EtakemonInfoAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_etakemon_info);
 
         NameText = (TextView) findViewById(R.id.nameEta);
@@ -111,5 +113,8 @@ public class EtakemonInfoAct extends AppCompatActivity {
                 image.setImageResource(R.drawable.error_picture);
                 break;
         }
+    }
+    public void onClickBack (View view){
+        this.finish();
     }
 }

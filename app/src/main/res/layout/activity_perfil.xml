@@ -8,7 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.upc.jonatan.eetakemongo.PerfilAct">
+    tools:context="edu.upc.jonatan.eetakemongo.PerfilAct"
+    android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
+    android:backgroundTint="@color/wallet_highlighted_text_holo_light">
 
     <TextView
         android:text="UserName"
@@ -26,65 +28,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/nickTv"
         android:ems="5"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="77dp"
         android:id="@+id/textView9"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="APELLIDO:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="5"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="24dp"
         android:id="@+id/textView7"
         android:textSize="20sp"
         android:layout_below="@+id/nameET"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="MAIL:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textView5"
-        android:textSize="20sp"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold" />
 
     <Button
-        android:text="Actualizar"
+        android:text="Cambiar Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="74dp"
         android:id="@+id/updatebt"
-        android:onClick="onClickUpdate" />
-
-    <TextView
-        android:text="jonatan@gmail.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/mailET"
+        android:onClick="onClickUpdate"
         android:textSize="20sp"
-        android:layout_above="@+id/updatebt"
-        android:layout_toRightOf="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5" />
-
-    <TextView
-        android:text="Collado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="5"
-        android:id="@+id/surnameET"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_centerHorizontal="true" />
+        android:backgroundTint="@android:color/holo_orange_dark" />
 
     <TextView
         android:text="Jonatan"
@@ -95,6 +69,65 @@
         android:textSize="20sp"
         android:layout_alignBaseline="@+id/textView9"
         android:layout_alignBottom="@+id/textView9"
-        android:layout_alignRight="@+id/updatebt"
-        android:layout_alignEnd="@+id/updatebt" />
+        android:layout_alignLeft="@+id/nickTv"
+        android:layout_alignStart="@+id/nickTv"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+    <TextView
+        android:text="MAIL:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:layout_marginTop="22dp"
+        android:id="@+id/textView5"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView7"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="Collado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:id="@+id/surnameET"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignLeft="@+id/nameET"
+        android:layout_alignStart="@+id/nameET"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <TextView
+        android:text="jonatan@gmail.com"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/mailET"
+        android:textSize="17sp"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_above="@+id/updatebt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5" />
+
+
+    <Button
+        android:id="@+id/btnRedondo"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:text="X"
+        android:textColor="#000000"
+        android:background="@drawable/boton_redondo"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        android:textAllCaps="false"
+        android:onClick="onClickBack" />
 </RelativeLayout>

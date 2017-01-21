@@ -47,19 +47,12 @@ public class GeofenceTransitionsIntentService extends IntentService implements G
             List<Geofence> triggeringGeofences = geofencingEvent.getTriggeringGeofences();
             Log.i(TAG, triggeringGeofences.toString());
             int requestIdOfGeofenceTriggered = Integer.parseInt(triggeringGeofences.get(0).getRequestId());
-            //goToProfemonAppearedActivity(requestIdOfGeofenceTriggered);
             removeGeofence(requestIdOfGeofenceTriggered);
         } else {
             Log.e(TAG, "Geofence Transition Invalid Type");
         }
         mGoogleApiClient.disconnect();
     }
-
-   /* private void goToProfemonAppearedActivity(int requestIdOfGeofenceTriggered) {
-        Intent profemonAppearedIntent = new Intent(this, ProfemonAppearedActivity.class);
-        profemonAppearedIntent.putExtra("requestIdOfGeofenceTriggered", requestIdOfGeofenceTriggered);
-        startActivity(profemonAppearedIntent);
-    }*/
 
     private void removeGeofence(int requestIdOfGeofenceToRemove) {
         List<String> geofenceRequestIdsToDelete = Collections.singletonList(String.valueOf(requestIdOfGeofenceToRemove));

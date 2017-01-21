@@ -36,6 +36,7 @@ public class Register extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            getSupportActionBar().hide();
             setContentView(R.layout.activity_register);
 
 
@@ -65,11 +66,9 @@ public class Register extends AppCompatActivity {
             {
                 Log.i(TAG, e.toString());
             }
-
-           /* if (name.getText().length()!=0 || password.getText().length()!=0 ||
-                    mail.getText().length()!=0 || nick.getText().length()!=0 ||
-                    surname.getText().length()!=0 || pasword2.getText().length()!=0) {*/
-            if (name.getText().length()==0){
+            if (name.getText().length()==0 || password.getText().length()==0 ||
+                    mail.getText().length()==0 || nick.getText().length()==0 ||
+                    surname.getText().length()==0 || pasword2.getText().length()==0){
                 Toast.makeText(getApplicationContext(), "Write on all the fields please.", Toast.LENGTH_SHORT).show();
             } else {
                 APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {
@@ -85,8 +84,8 @@ public class Register extends AppCompatActivity {
                         User usrReg = new Gson().fromJson(responseString, User.class);
                         Log.i(TAG, "Register is successful: " + usrReg.getNick());
                         if (usrReg.getNick()!=null) {
-                            Toast.makeText(getApplicationContext(), "Welcome " + user.getNick() + "!", Toast.LENGTH_LONG).show();
-                            Intent ib1 = new Intent(Register.this, MenuAct.class);
+                            Toast.makeText(getApplicationContext(), "Empieza a jugar " + user.getNick() + "!", Toast.LENGTH_LONG).show();
+                            Intent ib1 = new Intent(Register.this, MainActivity.class);
                             startActivity(ib1);
                         } else {
                             Toast.makeText(getApplicationContext(), "Username or email already exists. Please try again!", Toast.LENGTH_LONG).show();

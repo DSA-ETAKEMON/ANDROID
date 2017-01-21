@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         et1= (EditText) findViewById(R.id.login);
         et2= (EditText) findViewById(R.id.pswdConfET);
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Login is successful: " + usrRes);
                 if (usrRes.getNick().equals(usr1.getNick())) {
 
-                    Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_SHORT).show();
                     idOnUse=usrRes.getId();
                     nameOnUse=usrRes.getName();
                     nickOnUse=usrRes.getNick();

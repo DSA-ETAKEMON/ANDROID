@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 public class MenuAct extends AppCompatActivity {
 
@@ -18,23 +17,23 @@ public class MenuAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_menu);
-        Bundle intentdata = getIntent().getExtras();
-        Integer idUser = intentdata.getInt("idUser");
-        String nameUser = intentdata.getString("nameUser");
-        String nickUser = intentdata.getString("nickUser");
-        String surnameUser = intentdata.getString("surnameUser");
-        String mailUser = intentdata.getString("mailUser");
+            Bundle intentdata = getIntent().getExtras();
+            Integer idUser = intentdata.getInt("idUser");
+            String nameUser = intentdata.getString("nameUser");
+            String nickUser = intentdata.getString("nickUser");
+            String surnameUser = intentdata.getString("surnameUser");
+            String mailUser = intentdata.getString("mailUser");
 
-        idonuse = idUser;
-        nickonuse= nickUser;
-        nameonuse=nameUser;
-        surnameonuse=surnameUser;
-        mailonuse= mailUser;
-
+            idonuse = idUser;
+            nickonuse = nickUser;
+            nameonuse = nameUser;
+            surnameonuse = surnameUser;
+            mailonuse = mailUser;
     }
     public void onClickCazar (View view){
-        Intent Cazar = new Intent(MenuAct.this, CazarAct.class);
+        Intent Cazar = new Intent(MenuAct.this, MapAct.class);
         startActivity(Cazar);
     }
     public void onClickPerfil (View view){
@@ -60,7 +59,7 @@ public class MenuAct extends AppCompatActivity {
         Etakedex.putExtra("idUser",idonuse);
         startActivity(Etakedex);
     }
-    public void onClickExit (View view){
+    public void onClickBack (View view){
         Intent inicio = new Intent (this, MainActivity.class);
         startActivity(inicio);
 

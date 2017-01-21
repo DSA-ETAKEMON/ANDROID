@@ -10,25 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.upc.jonatan.eetakemongo.MenuAct"
-    android:background="@drawable/menufondo">
+    android:background="@color/cast_intro_overlay_button_background_color">
 
-
-    <Button
-        android:text="CAZAR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btCazar"
-        android:ems="10"
-        style="@style/Widget.AppCompat.Button"
-        android:onClick="onClickCazar"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        android:backgroundTint="@color/cast_expanded_controller_text_color" />
 
     <Button
         android:text="PERFIL"
@@ -36,14 +19,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/btPerfil"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="40dp"
         style="@style/Widget.AppCompat.Button"
         android:onClick="onClickPerfil"
         android:layout_below="@+id/btEetakedex"
         android:layout_alignLeft="@+id/btEetakedex"
         android:layout_alignStart="@+id/btEetakedex"
         android:textSize="20sp"
-        android:textStyle="normal|bold"
         android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
         android:backgroundTint="@color/cast_expanded_controller_text_color" />
 
@@ -51,7 +33,7 @@
         android:text="EETAKEDEX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/btEetakedex"
         style="@style/Widget.AppCompat.Button"
         android:ems="10"
@@ -60,7 +42,6 @@
         android:layout_alignLeft="@+id/btCazar"
         android:layout_alignStart="@+id/btCazar"
         android:textSize="20sp"
-        android:textStyle="normal|bold"
         android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
         android:backgroundTint="@color/cast_expanded_controller_text_color" />
 
@@ -68,7 +49,7 @@
         android:text="RANKING"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/button3"
         style="@style/Widget.AppCompat.Button"
         android:ems="10"
@@ -77,7 +58,6 @@
         android:layout_alignLeft="@+id/btPerfil"
         android:layout_alignStart="@+id/btPerfil"
         android:textSize="20sp"
-        android:textStyle="normal|bold"
         android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
         android:backgroundTint="@color/cast_expanded_controller_text_color" />
 
@@ -85,7 +65,7 @@
         android:text="WIKILIST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/btWikilist"
         style="@style/Widget.AppCompat.Button"
         android:ems="10"
@@ -94,7 +74,6 @@
         android:layout_alignLeft="@+id/button3"
         android:layout_alignStart="@+id/button3"
         android:textSize="20sp"
-        android:textStyle="normal|bold"
         android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
         android:backgroundTint="@color/cast_expanded_controller_text_color" />
 
@@ -103,11 +82,12 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/pokeball"
         android:id="@+id/imageView4"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:layout_above="@+id/btEetakedex"
         android:layout_toLeftOf="@+id/btCazar"
-        android:layout_toStartOf="@+id/btCazar" />
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:layout_toStartOf="@+id/btCazar"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/btPerfil" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -119,9 +99,10 @@
         android:layout_above="@+id/btWikilist"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="1dp"
         android:layout_toLeftOf="@+id/btCazar"
         android:layout_toStartOf="@+id/btCazar" />
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -159,15 +140,36 @@
         android:layout_toStartOf="@+id/button3" />
 
     <Button
-        android:text="SALIR"
+        android:id="@+id/btnRedondo"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:text="X"
+        android:textColor="#000000"
+        android:background="@drawable/boton_redondo"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        android:textAllCaps="false"
+        android:onClick="onClickBack" />
+
+    <Button
+        android:text="CAZAR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btSalir"
-        android:ems="5"
+        android:layout_marginTop="96dp"
+        android:id="@+id/btCazar"
+        android:ems="10"
         style="@style/Widget.AppCompat.Button"
-        android:onClick="onClickExit"
-        android:textSize="30sp"
-        android:layout_below="@+id/imageView8"
-        android:layout_centerHorizontal="true" />
+        android:onClick="onClickCazar"
+        android:textSize="20sp"
+        android:background="@drawable/cast_expanded_controller_actionbar_bg_gradient_light"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:backgroundTint="@color/cast_expanded_controller_text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp" />
 
 </RelativeLayout>

@@ -24,6 +24,7 @@ public class PerfilAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_perfil);
 
         Bundle intentdata = getIntent().getExtras();
@@ -33,11 +34,6 @@ public class PerfilAct extends AppCompatActivity {
         String surnameUser = intentdata.getString("surnameUser");
         String mailUser = intentdata.getString("mailUser");
 
-        /*idonuse = idUser;
-        nickonuse= nickUser;
-        nameonuse=nameUser;
-        surnameonuse=surnameUser;
-        mailonuse= mailUser;*/
 
         NICKONUSE = (TextView) findViewById(R.id.nickTv);
         NAMEONUSE = (TextView) findViewById(R.id.nameET);
@@ -69,4 +65,8 @@ public class PerfilAct extends AppCompatActivity {
         Actualizar.putExtra("nickUser",nickonuse);
         startActivity(Actualizar);
     }
+    public void onClickBack (View view){
+        this.finish();
+    }
+
 }
