@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     String nameOnUse;
     String surnameOnUse;
     String mailOnUse;
+    int puntosOnUse;
+    int totalEtaOnUse;
 
     private static final String TAG="LOGIN";
 
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     nickOnUse=usrRes.getNick();
                     surnameOnUse=usrRes.getSurname();
                     mailOnUse=usrRes.getEmail();
+                    puntosOnUse=usrRes.getPuntuacionTotal();
+                    totalEtaOnUse=usrRes.getTotalEtakemons();
 
                     Intent menu = new Intent(MainActivity.this, MenuAct.class);
                     menu.putExtra("idUser",idOnUse);
@@ -80,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     menu.putExtra("nickUser",nickOnUse);
                     menu.putExtra("surnameUser",surnameOnUse);
                     menu.putExtra("mailUser",mailOnUse);
+                    menu.putExtra("puntosUser",puntosOnUse);
+                    menu.putExtra("etakemonsUser",totalEtaOnUse);
                     startActivity(menu);
                 } else {
                     Toast.makeText(getApplicationContext(), "Username or password incorrect. Please try again!", Toast.LENGTH_LONG).show();

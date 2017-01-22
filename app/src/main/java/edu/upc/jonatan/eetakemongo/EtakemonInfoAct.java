@@ -6,21 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import edu.upc.jonatan.eetakemongo.API.APIClient;
 import edu.upc.jonatan.eetakemongo.Entity.EtakemonsDescription;
-import edu.upc.jonatan.eetakemongo.Entity.User;
-import edu.upc.jonatan.eetakemongo.Entity.etakemons;
 
 public class EtakemonInfoAct extends AppCompatActivity {
 
@@ -62,7 +54,7 @@ public class EtakemonInfoAct extends AppCompatActivity {
             tipoEtakemonTV.setText("Tipo: " + tipoEta);
         }
             puntuacionCombate = puntosEta;
-            puntuacionCP.setText("CP: " + puntosEta + "puntos");
+            puntuacionCP.setText("CP: " + puntosEta + " puntos");
 
         APIClient.get("/etakemon/getdescription/" + idEta, null, new TextHttpResponseHandler() {
             @Override
@@ -82,9 +74,6 @@ public class EtakemonInfoAct extends AppCompatActivity {
 
                 descripcionTV.setText("Poder: " + descripcionEta);
 
-
-
-
             }
         });
 
@@ -103,11 +92,17 @@ public class EtakemonInfoAct extends AppCompatActivity {
             case "alumno":
                 image.setImageResource(R.drawable.alumno);
                 break;
-            case "profesor":
-                image.setImageResource(R.drawable.profesor);
+            case "profesora":
+                image.setImageResource(R.drawable.profesora);
                 break;
             case "director":
                 image.setImageResource(R.drawable.director);
+                break;
+            case "alumna":
+                image.setImageResource(R.drawable.alumna);
+                break;
+            case "profesor":
+                image.setImageResource(R.drawable.profesor);
                 break;
             default:
                 image.setImageResource(R.drawable.error_picture);

@@ -141,9 +141,9 @@
 
     <Button
         android:id="@+id/btnRedondo"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:text="X"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="Cerrar Sesión"
         android:textColor="#000000"
         android:background="@drawable/boton_redondo"
         android:textSize="25sp"

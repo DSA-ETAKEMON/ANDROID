@@ -54,7 +54,7 @@ public class WikilistInfoAct extends AppCompatActivity {
         }
         //puntosEtakemonTV.setText(puntosEta);
         puntuacionCombate = puntosEta;
-        puntuacionCP.setText("CP: " + puntosEta + "puntos");
+        puntuacionCP.setText("CP: " + puntosEta + " puntos");
 
 
         APIClient.get("/etakemon/getdescription/" + idEta, null, new TextHttpResponseHandler() {
@@ -94,11 +94,17 @@ public class WikilistInfoAct extends AppCompatActivity {
             case "alumno":
                 image.setImageResource(R.drawable.alumno);
                 break;
-            case "profesor":
-                image.setImageResource(R.drawable.profesor);
+            case "profesora":
+                image.setImageResource(R.drawable.profesora);
                 break;
             case "director":
                 image.setImageResource(R.drawable.director);
+                break;
+            case "alumna":
+                image.setImageResource(R.drawable.alumna);
+                break;
+            case "profesor":
+                image.setImageResource(R.drawable.profesor);
                 break;
             default:
                 image.setImageResource(R.drawable.error_picture);

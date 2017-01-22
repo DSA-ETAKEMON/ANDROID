@@ -12,6 +12,8 @@ public class MenuAct extends AppCompatActivity {
     String nickonuse;
     String surnameonuse;
     String mailonuse;
+    int puntosonuse;
+    int totaletaonuse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +27,19 @@ public class MenuAct extends AppCompatActivity {
             String nickUser = intentdata.getString("nickUser");
             String surnameUser = intentdata.getString("surnameUser");
             String mailUser = intentdata.getString("mailUser");
-
+            Integer puntosUser = intentdata.getInt("puntosUser");
+            Integer etakemonsUser = intentdata.getInt("etakemonsUser");
             idonuse = idUser;
             nickonuse = nickUser;
             nameonuse = nameUser;
             surnameonuse = surnameUser;
             mailonuse = mailUser;
+            puntosonuse = puntosUser;
+            totaletaonuse = etakemonsUser;
     }
     public void onClickCazar (View view){
         Intent Cazar = new Intent(MenuAct.this, MapAct.class);
+        Cazar.putExtra("idUser",idonuse);
         startActivity(Cazar);
     }
     public void onClickPerfil (View view){
@@ -43,6 +49,8 @@ public class MenuAct extends AppCompatActivity {
         perfil.putExtra("nickUser",nickonuse);
         perfil.putExtra("surnameUser",surnameonuse);
         perfil.putExtra("mailUser",mailonuse);
+        perfil.putExtra("puntuacionUser",puntosonuse);
+        perfil.putExtra("etakemonsUser",totaletaonuse);
         startActivity(perfil);
     }
     public void onClickRanking (View view){

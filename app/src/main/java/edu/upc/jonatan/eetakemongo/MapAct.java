@@ -33,18 +33,27 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import cz.msebera.android.httpclient.Header;
+import edu.upc.jonatan.eetakemongo.API.APIClient;
+import edu.upc.jonatan.eetakemongo.Entity.EtakemonsPosition;
+import edu.upc.jonatan.eetakemongo.Entity.etakemons;
+
 public class MapAct extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, ResultCallback<Status> {
     final String TAG = "CAZAR";
-
     private GoogleApiClient mGoogleApiClient;
-
+    etakemons etk = new etakemons();
+    int id;
     LocationRequest mLocationRequest;
     List<Geofence> mGeofenceList;
     PendingIntent mGeofencePendingIntent;
@@ -67,6 +76,10 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                 .build();
         createLocationRequest();
         mGeofenceList = new ArrayList<>();
+        Bundle intentdata = getIntent().getExtras();
+        if(intentdata!=null) {
+            id = intentdata.getInt("idUser");
+        }
     }
     
     protected void onStart() {
@@ -254,9 +267,34 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        double[] pos1= {0,0,10,11};
-       double[] pos2= {0,0,10,11};
-       List<LatLng> miListaPos = new ArrayList<>();
+     //  setMyLocationEnabled();
+      // LatLng miPos = getMyLatLng();
+       EtakemonsPosition etPos = new EtakemonsPosition();
+       etPos.setLat((float)41.275601);
+       etPos.setLng((float)1.985117);
+
+       APIClient.post(this, "/etakemon/getPosition", APIClient.getObjectAsStringEntity(etPos), "application/json", new TextHttpResponseHandler() {
+                   @Override
+                   public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    System.out.print("tu culo jona");
+                   }
+
+                   @Override
+                   public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                       Log.i(TAG, "Showing TopUsers");
+                       Type listType = new TypeToken<ArrayList<EtakemonsPosition>>(){}.getType();
+                       List<EtakemonsPosition> list = new Gson().fromJson(responseString, listType);
+                        for(EtakemonsPosition data : list){
+                            LatLng marker = new LatLng(data.getLat(), data.getLng());
+                            mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                        }
+                   }
+               });
+
+
+/*
+               List < LatLng > miListaPos = new ArrayList<>();
        LatLng rosa = new LatLng(41.275601, 1.985117);
        miListaPos.add(rosa);
        LatLng jonatan = new LatLng(41.276102, 1.986522);
@@ -266,6 +304,8 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
        LatLng hicham = new LatLng(41.275272, 1.985248);
        miListaPos.add(hicham);
 
+       */
+/*
        mMap.addMarker(new MarkerOptions().position(jonatan).title("Jonatan").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
        mMap.moveCamera(CameraUpdateFactory.newLatLng(jonatan));
 
@@ -277,36 +317,56 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
 
        mMap.addMarker(new MarkerOptions().position(hicham).title("Hicham").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker3)));
        mMap.moveCamera(CameraUpdateFactory.newLatLng(hicham));
+*/
+               mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                   @Override
+                   public boolean onMarkerClick(Marker marker) {
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-           @Override
-           public boolean onMarkerClick(Marker marker) {
+                       LatLng position = marker.getPosition();
+                       EtakemonsPosition etakem = new EtakemonsPosition();
+                       etakem.setLat((float)position.latitude);
+                       etakem.setLng((float)position.longitude);
 
-               LatLng position = marker.getPosition();
+                       APIClient.post(getApplicationContext(), "/etakemon/getEtakemonByPosition", APIClient.getObjectAsStringEntity(etakem), "application/json", new TextHttpResponseHandler() {
+                           @Override
+                           public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                               System.out.print("tu culo jona MAPA");
+                           }
 
-               double a = CalculationByDistance(getMyLatLng(),position);
-               boolean isCerca = a > (0.01);
-               if(!isCerca) {
+                           @Override
+                           public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                               Log.i(TAG, "Showing TopUsers");
+                               Gson json = new Gson();
+                               etk = json.fromJson(responseString, etakemons.class);
+                                System.out.println("****************************************" + String.valueOf(etk.getId()));
+                           }
+                       });
 
-                   Intent Actualizar = new Intent(MapAct.this,CazarAct.class);
-                   startActivity(Actualizar);
+                       double a = CalculationByDistance(getMyLatLng(), position);
+                       boolean isCerca = a > (0.01);
+                       if (!isCerca) {
 
+                           Intent Actualizar = new Intent(MapAct.this, CazarAct.class);
+                           if(etk.getId()!=0)
+                               Actualizar.putExtra("etakemonid",etk.getId());
+                           if(id!=0)
+                           Actualizar.putExtra(("iduser"),id);
+                           startActivity(Actualizar);
 
-                   AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
-                   builder1.setMessage("CAPURALO!");
-                   builder1.setCancelable(true);
-                   Toast.makeText(getApplicationContext(), "CAPTURALO! " , Toast.LENGTH_LONG).show();
-                   //Toast.makeText(getApplicationContext(), "Lat " + position.latitude + " " + "Long " + position.longitude, Toast.LENGTH_LONG).show();
-               }
-               else{
-                   AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
-                   builder1.setMessage("Todavia estas lejos.");
-                   builder1.setCancelable(true);
-                   Toast.makeText(getApplicationContext(), "Todavia estas lejos... " , Toast.LENGTH_SHORT).show();
-               }
-               return false;
-           }
-       });
+                           AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+                           builder1.setMessage("CAPURALO!");
+                           builder1.setCancelable(true);
+                           Toast.makeText(getApplicationContext(), "CAPTÚRALO! ", Toast.LENGTH_SHORT).show();
+                           //Toast.makeText(getApplicationContext(), "Lat " + position.latitude + " " + "Long " + position.longitude, Toast.LENGTH_LONG).show();
+                       } else {
+                           AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+                           builder1.setMessage("Todavia estas lejos.");
+                           builder1.setCancelable(true);
+                           Toast.makeText(getApplicationContext(), "Todavia estas lejos... ", Toast.LENGTH_SHORT).show();
+                       }
+                       return false;
+                   }
+               });
     }
 
     public double CalculationByDistance(LatLng StartP, LatLng EndP) {

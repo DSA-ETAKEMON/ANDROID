@@ -14,12 +14,16 @@ public class PerfilAct extends AppCompatActivity {
     String nickonuse;
     String mailonuse;
     String surnameonuse;
+    int puntuaciononuse;
+    int etakemonsonuse;
     int idonuse;
 
     TextView NICKONUSE;
     TextView NAMEONUSE;
     TextView MAILONUSE;
     TextView SURNAMEONUSE;
+    TextView PUNTOSONUSE;
+    TextView ETAKEMONSONUSE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,16 @@ public class PerfilAct extends AppCompatActivity {
         String nickUser = intentdata.getString("nickUser");
         String surnameUser = intentdata.getString("surnameUser");
         String mailUser = intentdata.getString("mailUser");
+        Integer puntosUser = intentdata.getInt("puntuacionUser");
+        Integer etakemonsUser = intentdata.getInt("etakemonsUser");
 
 
         NICKONUSE = (TextView) findViewById(R.id.nickTv);
         NAMEONUSE = (TextView) findViewById(R.id.nameET);
         SURNAMEONUSE = (TextView) findViewById(R.id.surnameET);
         MAILONUSE = (TextView) findViewById(R.id.mailET);
+        PUNTOSONUSE = (TextView) findViewById(R.id.puntosET);
+        ETAKEMONSONUSE = (TextView) findViewById(R.id.etakemonsET);
 
 
         if(nickUser.length()!=0) {
@@ -57,7 +65,10 @@ public class PerfilAct extends AppCompatActivity {
             mailonuse = mailUser;
             MAILONUSE.setText(mailUser);
         }
-
+        etakemonsonuse = etakemonsUser;
+        puntuaciononuse = puntosUser;
+        ETAKEMONSONUSE.setText("" + etakemonsUser);
+        PUNTOSONUSE.setText("" + puntosUser);
     }
     public void onClickUpdate (View view){
 

@@ -1,9 +1,16 @@
 package edu.upc.jonatan.eetakemongo;
 
 import android.app.ListActivity;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,7 +34,9 @@ public class RankingAct extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
         getElementList();
+
     }
+
     public void getElementList (){
 
         APIClient.get("/fight/GetTopUsers", null, new TextHttpResponseHandler() {
@@ -45,5 +54,7 @@ public class RankingAct extends ListActivity {
                 setListAdapter(new RankingAdapter(RankingAct.this, user2));
             }
         });
+
     }
+
 }

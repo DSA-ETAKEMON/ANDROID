@@ -9,14 +9,45 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.upc.jonatan.eetakemongo.CazarAct">
+    tools:context="edu.upc.jonatan.eetakemongo.CazarAct"
+    android:background="@drawable/fondocaptura">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/alumno"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/imageView9"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pokecaptura"
+        android:layout_marginBottom="76dp"
+        android:id="@+id/imageButton3"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:background="@drawable/cast_mini_controller_progress_drawable"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickCapturado" />
+
+    <TextView
+        android:text="CAPTURA!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/textView10"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:fontFamily="casual"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView9"
+        android:layout_alignEnd="@+id/imageView9"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:textColor="@color/cast_expanded_controller_background_color" />
+
 </RelativeLayout>
