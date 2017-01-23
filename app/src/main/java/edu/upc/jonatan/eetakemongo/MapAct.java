@@ -318,14 +318,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                                Log.i(TAG, "Showing TopUsers");
                                Gson json = new Gson();
                                etk = json.fromJson(responseString, etakemons.class);
-                               Intent Cazar = new Intent(MapAct.this, CazarAct.class);
-                               if(etk.getId()!=0)
-                                   Cazar.putExtra("etakemonid",etk.getId());
-                               if(id!=0)
-                                   Cazar.putExtra(("iduser"),id);
-                               if (etk.getTipo()!= null)
-                               Cazar.putExtra("etaketipo",etk.getTipo());
-                               startActivity(Cazar);
                            }
                        });
 
@@ -336,6 +328,14 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                            builder1.setMessage("CAPURALO!");
                            builder1.setCancelable(true);
                            Toast.makeText(getApplicationContext(), "VES A POR ÉL!! ", Toast.LENGTH_SHORT).show();
+                           Intent Cazar = new Intent(MapAct.this, CazarAct.class);
+                           if(etk.getId()!=0)
+                               Cazar.putExtra("etakemonid",etk.getId());
+                           if(id!=0)
+                               Cazar.putExtra(("iduser"),id);
+                           if (etk.getTipo()!= null)
+                               Cazar.putExtra("etaketipo",etk.getTipo());
+                           startActivity(Cazar);
                        } else {
                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
                            builder1.setMessage("Todavia estas lejos.");

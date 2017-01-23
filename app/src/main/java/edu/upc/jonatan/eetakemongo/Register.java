@@ -70,7 +70,7 @@ public class Register extends AppCompatActivity {
             }else if (password.getText() != pasword2.getText()){
                 Toast.makeText(getApplicationContext(), "El password y su confirmación no coinciden.", Toast.LENGTH_SHORT).show();
             }
-            else if (mail.getText().)
+
             else {
                 APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {
                     @Override
