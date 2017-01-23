@@ -256,8 +256,8 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
        EtakemonsPosition etPos = new EtakemonsPosition();
-       etPos.setLat((float)41.275601);
-       etPos.setLng((float)1.985117);
+       etPos.setLat((float)41.275465); //41.275465, 1.986374
+       etPos.setLng((float)1.9863746);
 
        APIClient.post(this, "/etakemon/getPosition", APIClient.getObjectAsStringEntity(etPos), "application/json", new TextHttpResponseHandler() {
                    @Override
@@ -311,6 +311,7 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                        APIClient.post(getApplicationContext(), "/etakemon/getEtakemonByPosition", APIClient.getObjectAsStringEntity(etakem), "application/json", new TextHttpResponseHandler() {
                            @Override
                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                               System.out.println("fallaaaaaaa");
                            }
 
                            @Override
@@ -318,6 +319,7 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                                Log.i(TAG, "Showing TopUsers");
                                Gson json = new Gson();
                                etk = json.fromJson(responseString, etakemons.class);
+                               System.out.println("holaaaa    " + etk.getTipo());
                            }
                        });
 
@@ -335,6 +337,7 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                                Cazar.putExtra(("iduser"),id);
                            if (etk.getTipo()!= null)
                                Cazar.putExtra("etaketipo",etk.getTipo());
+                           System.out.println("tipoo22222:  " + etk.getTipo());
                            startActivity(Cazar);
                        } else {
                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());

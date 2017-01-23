@@ -45,12 +45,14 @@ public class CazarAct extends AppCompatActivity {
         setContentView(R.layout.activity_cazar);
         etakemonImage = (ImageView) findViewById(R.id.etaimageD);
 
+
         Bundle intentdata = getIntent().getExtras();
         if (intentdata != null) {
             idEtakemon = intentdata.getInt("etakemonid");
             idUSer = intentdata.getInt("iduser");
             etk.setId(idEtakemon);
             tipoetakemon = intentdata.getString("etaketipo");
+            System.out.println("tipooooooo     " + tipoetakemon);
 
             setEetakemonImage(tipoetakemon, etakemonImage);
         }
