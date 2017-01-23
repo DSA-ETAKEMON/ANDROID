@@ -28,7 +28,6 @@ public class ActualizarAct extends AppCompatActivity {
 
     private static final String TAG="ACTUALIZAR";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,6 @@ public class ActualizarAct extends AppCompatActivity {
         actualpassET = (EditText) findViewById(R.id.ActualPassET);
         newpassET = (EditText) findViewById(R.id.newPassET);
         confirmpassET = (EditText) findViewById(R.id.pswdConfET);
-
 
         Bundle intentdata = getIntent().getExtras();
         String nickUser = intentdata.getString("nickUser");
@@ -58,14 +56,12 @@ public class ActualizarAct extends AppCompatActivity {
         }catch (FormatException e)
         {
             Log.e(TAG, e.toString());
-            Toast.makeText(getApplicationContext(), "-------- " + e.toString(), Toast.LENGTH_LONG).show();
-
         }
         APIClient.post(this, "/user/login", APIClient.getObjectAsStringEntity(usr1), "application/json", new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.e(TAG, "Error pass");
-                Toast.makeText(getApplicationContext(), "Error, actual password don't exist", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error, actual password no existe", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -81,8 +77,6 @@ public class ActualizarAct extends AppCompatActivity {
                     if (newPass.equals(confirmPass)&& newPass.length()!=0) {
                         try {
                             usrRes.setPassword(newPass);
-                            System.out.println("paso 2");
-                            System.out.println("holaaa som aqui     " + usrRes.getPassword());
                         } catch (FormatException e) {
                             System.out.println("erroor     " + e);
                         }
@@ -91,7 +85,7 @@ public class ActualizarAct extends AppCompatActivity {
                             @Override
                             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                                 Log.e(TAG, "Error pass");
-                                Toast.makeText(getApplicationContext(), "Error, password is not valid", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Error, password no es correcto", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
@@ -109,10 +103,9 @@ public class ActualizarAct extends AppCompatActivity {
                     } else {
                         System.out.println("Nuevo password i confirmación de nuevo password no coinciden");
                         Toast.makeText(getApplicationContext(), "Nuevo password i confirmación de nuevo password no coinciden", Toast.LENGTH_LONG).show();
-
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Is not possible change the password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No es posible cambiar el password", Toast.LENGTH_LONG).show();
                 }
             }
         });

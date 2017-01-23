@@ -51,7 +51,9 @@ import edu.upc.jonatan.eetakemongo.Entity.etakemons;
 
 public class MapAct extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, ResultCallback<Status> {
     final String TAG = "CAZAR";
+
     private GoogleApiClient mGoogleApiClient;
+
     etakemons etk = new etakemons();
     int id;
     LocationRequest mLocationRequest;
@@ -81,7 +83,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
             id = intentdata.getInt("idUser");
         }
     }
-    
     protected void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
@@ -91,18 +92,14 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
         mGoogleApiClient.disconnect();
         super.onStop();
     }
-
     private void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
     }
-
-
     private void createLocationRequest() {
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(10000);
         mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -125,7 +122,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
             }
         }
     }
-
     public boolean checkLocationPermission(){
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
@@ -152,28 +148,22 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
         } else {
             return true;
         }
-
     }
-
    @Override
     public void onConnected(Bundle connectionHint) {
         setMyLocationEnabled();
         startLocationUpdates();
     }
-
     @Override
     public void onConnectionSuspended(int i) {
-
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 
     @Override
     public void onResult(@NonNull Status status) {
-
     }
 
     @Override
@@ -223,8 +213,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
             if (location != null) {
                 return new LatLng(location.getLatitude(), location.getLongitude());
             }
-
-
         }
         return null;
     }
@@ -267,8 +255,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-     //  setMyLocationEnabled();
-      // LatLng miPos = getMyLatLng();
        EtakemonsPosition etPos = new EtakemonsPosition();
        etPos.setLat((float)41.275601);
        etPos.setLng((float)1.985117);
@@ -276,7 +262,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
        APIClient.post(this, "/etakemon/getPosition", APIClient.getObjectAsStringEntity(etPos), "application/json", new TextHttpResponseHandler() {
                    @Override
                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                    System.out.print("tu culo jona");
                    }
 
                    @Override
@@ -286,38 +271,34 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                        List<EtakemonsPosition> list = new Gson().fromJson(responseString, listType);
                         for(EtakemonsPosition data : list){
                             LatLng marker = new LatLng(data.getLat(), data.getLng());
-                            mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            if (data.getTipoetakemon().equals("alumno")){
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.alumnoooo)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }else if (data.getTipoetakemon().equals("alumna")){
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.lisa)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }else if (data.getTipoetakemon().equals("profesora")){
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.carapapel)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }else if (data.getTipoetakemon().equals("profesor")){
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.profe)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }else if (data.getTipoetakemon().equals("director")){
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.skynner)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }else {
+                                mMap.addMarker(new MarkerOptions().position(marker).title(data.getTipoetakemon()).visible(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                            }
                         }
                    }
                });
-
-
-/*
-               List < LatLng > miListaPos = new ArrayList<>();
-       LatLng rosa = new LatLng(41.275601, 1.985117);
-       miListaPos.add(rosa);
-       LatLng jonatan = new LatLng(41.276102, 1.986522);
-       miListaPos.add(jonatan);
-       LatLng uri = new LatLng(41.275386, 1.986102);
-       miListaPos.add(uri);
-       LatLng hicham = new LatLng(41.275272, 1.985248);
-       miListaPos.add(hicham);
-
-       */
-/*
-       mMap.addMarker(new MarkerOptions().position(jonatan).title("Jonatan").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
-       mMap.moveCamera(CameraUpdateFactory.newLatLng(jonatan));
-
-       mMap.addMarker(new MarkerOptions().position(rosa).title("Rosa").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2)));
-       mMap.moveCamera(CameraUpdateFactory.newLatLng(rosa));
-
-       mMap.addMarker(new MarkerOptions().position(uri).title("Uri").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.alumnoooo)));
-       mMap.moveCamera(CameraUpdateFactory.newLatLng(uri));
-
-       mMap.addMarker(new MarkerOptions().position(hicham).title("Hicham").visible(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker3)));
-       mMap.moveCamera(CameraUpdateFactory.newLatLng(hicham));
-*/
                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                    @Override
                    public boolean onMarkerClick(Marker marker) {
@@ -330,7 +311,6 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                        APIClient.post(getApplicationContext(), "/etakemon/getEtakemonByPosition", APIClient.getObjectAsStringEntity(etakem), "application/json", new TextHttpResponseHandler() {
                            @Override
                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                               System.out.print("tu culo jona MAPA");
                            }
 
                            @Override
@@ -338,26 +318,24 @@ public class MapAct extends FragmentActivity implements OnMapReadyCallback, Goog
                                Log.i(TAG, "Showing TopUsers");
                                Gson json = new Gson();
                                etk = json.fromJson(responseString, etakemons.class);
-                                System.out.println("****************************************" + String.valueOf(etk.getId()));
+                               Intent Cazar = new Intent(MapAct.this, CazarAct.class);
+                               if(etk.getId()!=0)
+                                   Cazar.putExtra("etakemonid",etk.getId());
+                               if(id!=0)
+                                   Cazar.putExtra(("iduser"),id);
+                               if (etk.getTipo()!= null)
+                               Cazar.putExtra("etaketipo",etk.getTipo());
+                               startActivity(Cazar);
                            }
                        });
 
                        double a = CalculationByDistance(getMyLatLng(), position);
                        boolean isCerca = a > (0.01);
                        if (!isCerca) {
-
-                           Intent Actualizar = new Intent(MapAct.this, CazarAct.class);
-                           if(etk.getId()!=0)
-                               Actualizar.putExtra("etakemonid",etk.getId());
-                           if(id!=0)
-                           Actualizar.putExtra(("iduser"),id);
-                           startActivity(Actualizar);
-
                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
                            builder1.setMessage("CAPURALO!");
                            builder1.setCancelable(true);
-                           Toast.makeText(getApplicationContext(), "CAPTÚRALO! ", Toast.LENGTH_SHORT).show();
-                           //Toast.makeText(getApplicationContext(), "Lat " + position.latitude + " " + "Long " + position.longitude, Toast.LENGTH_LONG).show();
+                           Toast.makeText(getApplicationContext(), "VES A POR ÉL!! ", Toast.LENGTH_SHORT).show();
                        } else {
                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
                            builder1.setMessage("Todavia estas lejos.");

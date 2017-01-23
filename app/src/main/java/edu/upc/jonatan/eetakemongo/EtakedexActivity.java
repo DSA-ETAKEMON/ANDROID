@@ -48,12 +48,12 @@ public  class EtakedexActivity extends ListActivity {
                 Log.i(TAG, "Showing Eetakemons");
                 Type listType = new TypeToken<ArrayList<etakemons>>(){}.getType();
                 List <etakemons> eta2 = new Gson().fromJson(responseString, listType);
-                if (eta2.size()!=0){
+                if (eta2!=null){
                     setListAdapter(new EetakedexAdapter(EtakedexActivity.this, eta2));
                 }else{
-                    Toast.makeText(getApplicationContext(), "Error, ningun Eetakemon capturado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Todavía no tienes ningún Eetakemon", Toast.LENGTH_LONG).show();
+                    finish();
                 }
-
             }
         });
     }
@@ -71,9 +71,6 @@ public  class EtakedexActivity extends ListActivity {
         showinfo.putExtra("NameEtakemon", nameEta);
         showinfo.putExtra("PuntosEtakemon", puntosEta);
         startActivity(showinfo);
-
     }
-
-
 }
 

@@ -58,5 +58,4 @@ public class EetakedexAdapter extends ArrayAdapter {
         }
         return itemView;
     }
-
 }

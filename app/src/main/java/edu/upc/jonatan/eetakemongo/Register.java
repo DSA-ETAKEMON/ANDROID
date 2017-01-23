@@ -31,14 +31,11 @@ public class Register extends AppCompatActivity {
         EditText pasword2;
         Button registerbtn;
 
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             getSupportActionBar().hide();
             setContentView(R.layout.activity_register);
-
 
             name = (EditText) findViewById(R.id.edName);
             password = (EditText) findViewById(R.id.etPassword);
@@ -69,26 +66,35 @@ public class Register extends AppCompatActivity {
             if (name.getText().length()==0 || password.getText().length()==0 ||
                     mail.getText().length()==0 || nick.getText().length()==0 ||
                     surname.getText().length()==0 || pasword2.getText().length()==0){
-                Toast.makeText(getApplicationContext(), "Write on all the fields please.", Toast.LENGTH_SHORT).show();
-            } else {
+                Toast.makeText(getApplicationContext(), "Escribe en todos los campos.", Toast.LENGTH_SHORT).show();
+            }else if (password.getText() != pasword2.getText()){
+                Toast.makeText(getApplicationContext(), "El password y su confirmación no coinciden.", Toast.LENGTH_SHORT).show();
+            }
+            else if (mail.getText().)
+            else {
                 APIClient.post(this, "/user/register", APIClient.getObjectAsStringEntity(user), "application/json", new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                         Log.e(TAG, "Error registering from hello");
-                        Toast.makeText(getApplicationContext(), "Error registering. Please try again!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error al resgistrar, por favor, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                        Log.i(TAG, "Success registering: " + responseString);
-                        User usrReg = new Gson().fromJson(responseString, User.class);
-                        Log.i(TAG, "Register is successful: " + usrReg.getNick());
-                        if (usrReg.getNick()!=null) {
-                            Toast.makeText(getApplicationContext(), "Empieza a jugar " + user.getNick() + "!", Toast.LENGTH_LONG).show();
-                            Intent ib1 = new Intent(Register.this, MainActivity.class);
-                            startActivity(ib1);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Username or email already exists. Please try again!", Toast.LENGTH_LONG).show();
+                        if (responseString == null){
+                            Toast.makeText(getApplicationContext(), "El nick ya existe.", Toast.LENGTH_LONG).show();
+                        }else {
+                            Log.i(TAG, "Success registering: " + responseString);
+                            User usrReg = new Gson().fromJson(responseString, User.class);
+                            Log.i(TAG, "Register is successful: " + usrReg.getNick());
+                            if (usrReg.getNick() != null) {
+                                Toast.makeText(getApplicationContext(), "Login para empezar a jugar " + user.getNick() + "!", Toast.LENGTH_LONG).show();
+                                Intent ib1 = new Intent(Register.this, MainActivity.class);
+                                startActivity(ib1);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Error al registrar", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
                         }
                     }
                 });

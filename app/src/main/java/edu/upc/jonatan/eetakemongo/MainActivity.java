@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG="LOGIN";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +49,13 @@ public class MainActivity extends AppCompatActivity {
         }catch (FormatException e)
         {
             Log.e(TAG, e.toString());
-            Toast.makeText(getApplicationContext(), "-------- " + e.toString(), Toast.LENGTH_LONG).show();
-
         }
 
         APIClient.post(this, "/user/login", APIClient.getObjectAsStringEntity(usr1), "application/json", new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.e(TAG, "Error logging in");
-                Toast.makeText(getApplicationContext(), "Error logging in. Please try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error logging in. Vuelve a intentarlo por favor", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Login is successful: " + usrRes);
                 if (usrRes.getNick().equals(usr1.getNick())) {
 
-                    Toast.makeText(getApplicationContext(), "Welcome " + usr1.getNick() + "!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bienvenido " + usr1.getNick() + "!", Toast.LENGTH_SHORT).show();
                     idOnUse=usrRes.getId();
                     nameOnUse=usrRes.getName();
                     nickOnUse=usrRes.getNick();
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     menu.putExtra("etakemonsUser",totalEtaOnUse);
                     startActivity(menu);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Username or password incorrect. Please try again!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Nick o password incorrectos, intenta otra vez", Toast.LENGTH_LONG).show();
                 }
             }
         });

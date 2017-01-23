@@ -52,7 +52,6 @@ public class WikilistInfoAct extends AppCompatActivity {
             tipoetakemon = tipoEta;
             tipoEtakemonTV.setText("Tipo: " + tipoEta);
         }
-        //puntosEtakemonTV.setText(puntosEta);
         puntuacionCombate = puntosEta;
         puntuacionCP.setText("CP: " + puntosEta + " puntos");
 
@@ -62,7 +61,6 @@ public class WikilistInfoAct extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.e(TAG, "Error taking info from Server");
             }
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
 
@@ -74,14 +72,9 @@ public class WikilistInfoAct extends AppCompatActivity {
                 descripcionEta = etares.getPoder();
 
                 descripcionTV.setText("Poder: " + descripcionEta);
-
             }
         });
-
-
         setEetakemonImage(tipoEta, etakemonImage);
-
-
     }
     public void setEetakemonImage(String nom, ImageView image) {
         switch (nom) {

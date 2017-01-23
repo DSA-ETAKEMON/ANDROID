@@ -18,7 +18,6 @@ public class EtakemonInfoAct extends AppCompatActivity {
 
     final String TAG="EtakemonDescrip";
 
-
     ImageView etakemonImage;
     TextView NameText;
     String nameetakemon;
@@ -38,7 +37,6 @@ public class EtakemonInfoAct extends AppCompatActivity {
         etakemonImage= (ImageView) findViewById(R.id.etaImage);
         tipoEtakemonTV = (TextView) findViewById(R.id.tipoEta);
         puntuacionCP = (TextView) findViewById(R.id.puntosTV);
-
 
         Bundle intentData = getIntent().getExtras();
         String nameEta = intentData.getString("NameEtakemon");
@@ -73,13 +71,9 @@ public class EtakemonInfoAct extends AppCompatActivity {
                 descripcionEta = etares.getPoder();
 
                 descripcionTV.setText("Poder: " + descripcionEta);
-
             }
         });
-
         setEetakemonImage(tipoEta, etakemonImage);
-
-
     }
     public void setEetakemonImage(String nom, ImageView image) {
         switch (nom) {

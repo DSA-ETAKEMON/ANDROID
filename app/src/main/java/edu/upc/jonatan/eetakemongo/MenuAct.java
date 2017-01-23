@@ -58,7 +58,7 @@ public class MenuAct extends AppCompatActivity {
             Intent Ranking = new Intent(MenuAct.this, RankingAct.class);
             startActivity(Ranking);
         }catch (Exception e){
-            System.out.println("errooooooor                       "+e);
+            System.out.println("error "+e);
         }
     }
     public void onClickEetakedex (View view){

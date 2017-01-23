@@ -17,7 +17,9 @@
         android:id="@+id/fiveBT"
         android:layout_alignTop="@+id/fourBT"
         android:layout_toRightOf="@+id/fourBT"
-        android:layout_toEndOf="@+id/fourBT" />
+        android:layout_toEndOf="@+id/fourBT"
+        android:onClick="onClickBT5"
+        android:textSize="30sp" />
 
     <Button
         android:text="3"
@@ -27,7 +29,9 @@
         android:layout_alignBottom="@+id/twoBT"
         android:layout_toRightOf="@+id/twoBT"
         android:layout_toEndOf="@+id/twoBT"
-        android:layout_alignTop="@+id/twoBT" />
+        android:layout_alignTop="@+id/twoBT"
+        android:onClick="onClickBT3"
+        android:textSize="30sp" />
 
     <Button
         android:text="4"
@@ -36,7 +40,9 @@
         android:id="@+id/fourBT"
         android:layout_below="@+id/oneBT"
         android:layout_alignLeft="@+id/oneBT"
-        android:layout_alignStart="@+id/oneBT" />
+        android:layout_alignStart="@+id/oneBT"
+        android:onClick="onClickBT4"
+        android:textSize="30sp" />
 
     <Button
         android:text="2"
@@ -45,7 +51,9 @@
         android:id="@+id/twoBT"
         android:layout_above="@+id/fiveBT"
         android:layout_toRightOf="@+id/oneBT"
-        android:layout_toEndOf="@+id/oneBT" />
+        android:layout_toEndOf="@+id/oneBT"
+        android:onClick="onClickBT2"
+        android:textSize="30sp" />
 
     <Button
         android:text="6"
@@ -54,7 +62,9 @@
         android:id="@+id/sixBT"
         android:layout_below="@+id/threeBT"
         android:layout_toRightOf="@+id/fiveBT"
-        android:layout_toEndOf="@+id/fiveBT" />
+        android:layout_toEndOf="@+id/fiveBT"
+        android:onClick="onClickBT6"
+        android:textSize="30sp" />
 
     <Button
         android:text="1"
@@ -66,7 +76,9 @@
         android:id="@+id/oneBT"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="onClickBT1"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/btnRedondo"
@@ -81,5 +93,17 @@
         android:layout_marginBottom="51dp"
         android:textAllCaps="false"
         android:onClick="onClickBack" />
+
+    <TextView
+        android:text="Se ha generado un número aleatorio automáticamente, para cazar el Eetakemon, tienes que adivinar el número con 3 intentos, SUERTE!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fiveBT"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:id="@+id/textView11"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 
 </RelativeLayout>

@@ -19,7 +19,6 @@ public class WikilistAdapter extends ArrayAdapter {
 
     private final Context context;
 
-
     public WikilistAdapter(Context context, List objects) {
         super(context, R.layout.activity_wikilist, objects);
         this.context = context;
@@ -29,7 +28,6 @@ public class WikilistAdapter extends ArrayAdapter {
         TextView name;
         TextView tipo;
     }
-
     @Override
     @NonNull
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -61,5 +59,4 @@ public class WikilistAdapter extends ArrayAdapter {
         }
         return itemView;
     }
-
 }

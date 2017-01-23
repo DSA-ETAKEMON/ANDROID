@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:hint="PASSWORD"
         android:ems="15"
-        android:text="admin"
         android:layout_marginTop="22dp"
         android:textSize="27dp"
         android:id="@+id/ActualPassET"

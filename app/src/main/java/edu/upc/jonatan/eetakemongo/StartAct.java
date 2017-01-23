@@ -21,8 +21,6 @@ public class StartAct extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_start);
     }
-
-
     public void OnClickStart (View view){
         Intent start = new Intent(StartAct.this,MainActivity.class);
         startActivity(start);
